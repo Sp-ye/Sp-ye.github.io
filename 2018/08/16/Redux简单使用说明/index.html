@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="react,redux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一个简单的Redux Demo计数器应用">
+<meta name="keywords" content="react,redux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redux简单使用说明">
+<meta property="og:url" content="http://yoursite.com/2018/08/16/Redux简单使用说明/index.html">
+<meta property="og:site_name" content="May the force be with you!">
+<meta property="og:description" content="一个简单的Redux Demo计数器应用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-16T09:34:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redux简单使用说明">
+<meta name="twitter:description" content="一个简单的Redux Demo计数器应用">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/16/Redux简单使用说明/"/>
+
+
+
+
+
+  <title>Redux简单使用说明 | May the force be with you!</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">May the force be with you!</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">3333</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Force
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/16/Redux简单使用说明/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Sp-ye">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the force be with you!">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redux简单使用说明</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-16T16:19:03+08:00">
+                2018-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一个简单的Redux-Demo计数器应用"><a href="#一个简单的Redux-Demo计数器应用" class="headerlink" title="一个简单的Redux Demo计数器应用"></a>一个简单的Redux Demo计数器应用</h1><a id="more"></a>
+<h2 id="使用前得需要安装"><a href="#使用前得需要安装" class="headerlink" title="使用前得需要安装"></a>使用前得需要安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<h2 id="创建actions"><a href="#创建actions" class="headerlink" title="创建actions"></a>创建actions</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/actions/CountAction.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> Types <span class="keyword">from</span> <span class="string">'../config/Types'</span></span><br><span class="line"><span class="comment">// +1操作</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">addAction</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		type: Types.ADD</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// -1操作</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">reduceAction</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		type: Types.REDUCE</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// setNumAction1 和 setNumAction2 区别只是接受的参数类型不一样，此处无区别，区别在reducer内</span></span><br><span class="line"><span class="comment">// 指定值</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">setNumAction1</span> (<span class="params">params</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// params 可以为任何类型，一般为对象</span></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		type: Types.SETNUM1,</span><br><span class="line">		data: params</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定值</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">setNumAction2</span> (<span class="params">params</span>) </span>&#123;</span><br><span class="line">	<span class="comment">// params 可以为任何类型，一般为对象</span></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		type: Types.SETNUM2,</span><br><span class="line">		data: params</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建Types"><a href="#创建Types" class="headerlink" title="创建Types"></a>创建Types</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/config/Types.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ADD = <span class="string">'ADD'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> REDUCE = <span class="string">'REDUCE'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SETNUM1 = <span class="string">'SETNUM1'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> SETNUM2 = <span class="string">'SETNUM2'</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建reducers相关"><a href="#创建reducers相关" class="headerlink" title="创建reducers相关"></a>创建reducers相关</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/reducers/CountReducer.js</span></span><br><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> Types <span class="keyword">from</span> <span class="string">'../config/Types'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> initialState = &#123;</span><br><span class="line">	num: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">CountReducer</span> (<span class="params">state = initialState, action</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">		<span class="keyword">case</span> Types.ADD:</span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">				num: ++state.num</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> Types.REDUCE:</span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">				num: --state.num</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> Types.SETNUM1:</span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">				num: action.data</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">case</span> Types.SETNUM2:</span><br><span class="line">			<span class="keyword">return</span> &#123;</span><br><span class="line">				num: action.data.num</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">return</span> state</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/reducers/index.js</span></span><br><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">import</span> &#123; combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"><span class="keyword">import</span> &#123; CountReducer &#125; <span class="keyword">from</span> <span class="string">'./CountReducer'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们使用 combineReducers() 将多个 reducer 合并成为一个state</span></span><br><span class="line"><span class="keyword">const</span> rootReducer = combineReducers(&#123;</span><br><span class="line">	Count: CountReducer</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> rootReducer</span><br></pre></td></tr></table></figure>
+<h2 id="初始化store"><a href="#初始化store" class="headerlink" title="初始化store"></a>初始化store</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/store/index.js</span></span><br><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"><span class="keyword">import</span> rootReducer <span class="keyword">from</span> <span class="string">'../reducers/index'</span></span><br><span class="line"><span class="keyword">import</span> thunkMiddleWare <span class="keyword">from</span> <span class="string">'redux-thunk'</span></span><br><span class="line"><span class="keyword">import</span> logger <span class="keyword">from</span> <span class="string">'redux-logger'</span></span><br><span class="line"><span class="keyword">import</span> &#123; persistStore, autoRehydrate &#125; <span class="keyword">from</span> <span class="string">'redux-persist'</span></span><br><span class="line"><span class="keyword">import</span> &#123; AsyncStorage &#125; <span class="keyword">from</span> <span class="string">'react-native'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配置一些中间键</span></span><br><span class="line"><span class="keyword">let</span> middlewares = [</span><br><span class="line">	logger,				<span class="comment">// 触发action时候的控制台打印规则</span></span><br><span class="line">	thunkMiddleWare</span><br><span class="line">]</span><br><span class="line"><span class="keyword">let</span> createAppStore = applyMiddleware(...middlewares)(createStore)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">configureStore</span> (<span class="params">onComplete = (</span>) =&gt; </span>&#123;&#125;) &#123;</span><br><span class="line">	<span class="comment">/* 在reducers里 我们使用 combineReducers() 将多个 reducer 合并成为一个</span></span><br><span class="line"><span class="comment">	*  现在我们将其导入，并传递 createStore()</span></span><br><span class="line"><span class="comment">	*  createStore方法初始化state</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">const</span> store = autoRehydrate()(createAppStore)(rootReducer)</span><br><span class="line">	<span class="keyword">let</span> opt = &#123;</span><br><span class="line">		storage: AsyncStorage,</span><br><span class="line">		transform: []</span><br><span class="line">	&#125;</span><br><span class="line">	persistStore(store, opt, onComplete)</span><br><span class="line">	<span class="keyword">return</span> store</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="注入store"><a href="#注入store" class="headerlink" title="注入store"></a>注入store</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/Root.js</span></span><br><span class="line"></span><br><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></span><br><span class="line"><span class="keyword">import</span> configureStore <span class="keyword">from</span> <span class="string">'./store/index'</span></span><br><span class="line"><span class="keyword">import</span> Counter <span class="keyword">from</span> <span class="string">'./pages/Counter'</span></span><br><span class="line"><span class="comment">// import &#123; Navigator &#125; from 'react-native-deprecated-custom-components'</span></span><br><span class="line"><span class="keyword">let</span> store = configureStore()</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Root</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">	render () &#123;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			&lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">				&lt;Counter/&gt;</span><br><span class="line">			&lt;<span class="regexp">/Provider&gt;</span></span><br><span class="line"><span class="regexp">		)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="API部分"><a href="#API部分" class="headerlink" title="API部分"></a>API部分</h2><h3 id="connect函数"><a href="#connect函数" class="headerlink" title="connect函数"></a>connect函数</h3><p>连接 React 组件与 Redux store<br>连接操作不会改变原来的组件类，反而返回一个新的已与 Redux store 连接的组件类</p>
+<p>connect()函数接受四个参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>mapStateToProps<br> [mapStateToProps(state, [ownProps]): stateProps] (Function): 如果定义该参数，组件将会监听 Redux store 的变化。任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。该回调函数必须返回一个纯对象，这个对象会与组件的 props 合并。如果你省略了这个参数，你的组件将不会监听 Redux store。如果指定了该回调函数中的第二个参数 ownProps，则该参数的值为传递到组件的 props，而且只要组件接收到新的 props，mapStateToProps 也会被调用（例如，当 props 接收到来自父组件一个小小的改动，那么你所使用的 ownProps 参数，mapStateToProps 都会被重新计算）。</p>
+</li>
+<li><p>mapDispatchToProps<br> [mapDispatchToProps(dispatch, [ownProps]): dispatchProps] (Object or Function): 如果传递的是一个对象，那么每个定义在该对象的函数都将被当作 Redux action creator，对象所定义的方法名将作为属性名；每个方法将返回一个新的函数，函数中dispatch方法会将action creator的返回值作为参数执行。这些属性会被合并到组件的 props 中。</p>
+</li>
+<li>mergeProps <strong>（目前没用过）</strong><br> [mergeProps(stateProps, dispatchProps, ownProps): props] (Function): 如果指定了这个参数，mapStateToProps() 与 mapDispatchToProps() 的执行结果和组件自身的 props 将传入到这个回调函数中。该回调函数返回的对象将作为 props 传递到被包装的组件中。你也许可以用这个回调函数，根据组件的 props 来筛选部分的 state 数据，或者把 props 中的某个特定变量与 action creator 绑定在一起。如果你省略这个参数，默认情况下返回 Object.assign({}, ownProps, stateProps, dispatchProps) 的结果。</li>
+<li>options<ol>
+<li>[pure = true] (Boolean): 如果为 true，connector 将执行 shouldComponentUpdate 并且浅对比 mergeProps 的结果，避免不必要的更新，前提是当前组件是一个“纯”组件，它不依赖于任何的输入或 state 而只依赖于 props 和 Redux store 的 state。默认值为 true</li>
+<li>[withRef = false] (Boolean): 如果为 true，connector 会保存一个对被包装组件实例的引用，该引用通过 getWrappedInstance() 方法获得。默认值为 false</li>
+</ol>
+</li>
+</ul>
+<p>标签: 注意：<br>    如果定义一个包含强制性参数函数（这个函数的长度为 1）时，ownProps 不会传到 mapStateToProps 和 mapDispatchToProps 中。举个例子，如下这样定义一个函数时将不会接收到 ownProps 作为第二个参数。</p>
+<h3 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span> (<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(state); <span class="comment">// state</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">1</span>]); <span class="comment">// undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state, ownProps = &#123;&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(state); <span class="comment">// state</span></span><br><span class="line">    <span class="built_in">console</span>.log(ownProps); <span class="comment">// undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state, ownProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(state); <span class="comment">// state</span></span><br><span class="line">    <span class="built_in">console</span>.log(ownProps); <span class="comment">// ownProps</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]); <span class="comment">// state</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">1</span>]); <span class="comment">// ownProps</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(args[<span class="number">0</span>]); <span class="comment">// state</span></span><br><span class="line">    <span class="built_in">console</span>.log(args[<span class="number">1</span>]); <span class="comment">// ownProps</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps)(Counter)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="写法介绍"><a href="#写法介绍" class="headerlink" title="写法介绍"></a>写法介绍</h3><h4 id="ES7以下"><a href="#ES7以下" class="headerlink" title="ES7以下"></a>ES7以下</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入 所需动作</span></span><br><span class="line"><span class="keyword">import</span> &#123; addAction, reduceAction &#125; <span class="keyword">from</span> <span class="string">'../actions/CountAction'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 触发 加的动作</span></span><br><span class="line">	add = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">this</span>.props.dispatch(addAction())</span><br><span class="line">	&#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span> (<span class="params">state</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		Count: state.Count</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps)(Counter)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入 所需动作</span></span><br><span class="line"><span class="keyword">import</span> &#123; addAction, reduceAction &#125; <span class="keyword">from</span> <span class="string">'../actions/CountAction'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 触发 加的动作</span></span><br><span class="line">	add = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">this</span>.props.dispatch(addAction())</span><br><span class="line">	&#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(</span><br><span class="line">    state =&gt; (&#123; <span class="attr">Count</span>: state.Count &#125;)</span><br><span class="line">)(Counter)</span><br></pre></td></tr></table></figure>
+<h4 id="ES7"><a href="#ES7" class="headerlink" title="ES7"></a>ES7</h4><p>需先安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install —save-dev babel-plugin-transform-decorators-legacy</span><br></pre></td></tr></table></figure></p>
+<p>然后在.babelrc 文件加上<code>&quot;plugins&quot;: [&quot;transform-decorators-legacy&quot;]</code> 把装饰器(@)语法转成es5<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [&quot;react-native&quot;],</span><br><span class="line">  &quot;plugins&quot;: [&quot;transform-decorators-legacy&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入 所需动作</span></span><br><span class="line"><span class="keyword">import</span> &#123; addAction, reduceAction &#125; <span class="keyword">from</span> <span class="string">'../actions/CountAction'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 此写法 connect 与 class之间不能插入其他代码</span></span><br><span class="line">@connect(</span><br><span class="line">	state =&gt; (&#123;</span><br><span class="line">    	Count: state.Count</span><br><span class="line">	&#125;),</span><br><span class="line">	dispatch =&gt; (&#123;</span><br><span class="line">		...bindActionCreators(&#123; add, reduce &#125;, dispatch)</span><br><span class="line">	&#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Counter</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 触发 加的动作</span></span><br><span class="line">	add = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">this</span>.props.addAction()</span><br><span class="line">	&#125;</span><br><span class="line">	render () &#123;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">			&lt;View style=&#123;styles.container1&#125;&gt;</span><br><span class="line">			&lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">		)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="相关文档"><a href="#相关文档" class="headerlink" title="相关文档"></a>相关文档</h2><h3 id="Redux中文文档：-http-www-redux-org-cn"><a href="#Redux中文文档：-http-www-redux-org-cn" class="headerlink" title="Redux中文文档： http://www.redux.org.cn/"></a>Redux中文文档： <a href="http://www.redux.org.cn/" target="_blank" rel="noopener">http://www.redux.org.cn/</a></h3><h3 id="ES6中文文档：-http-es6-ruanyifeng-com"><a href="#ES6中文文档：-http-es6-ruanyifeng-com" class="headerlink" title="ES6中文文档：   http://es6.ruanyifeng.com/"></a>ES6中文文档：   <a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">http://es6.ruanyifeng.com/</a></h3><h3 id="ES7-amp-ES8特性：-https-www-jianshu-com-p-a138a525c287"><a href="#ES7-amp-ES8特性：-https-www-jianshu-com-p-a138a525c287" class="headerlink" title="ES7&amp;ES8特性：   https://www.jianshu.com/p/a138a525c287"></a>ES7&amp;ES8特性：   <a href="https://www.jianshu.com/p/a138a525c287" target="_blank" rel="noopener">https://www.jianshu.com/p/a138a525c287</a></h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag"># react</a>
+          
+            <a href="/tags/redux/" rel="tag"># redux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/16/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Sp-ye</p>
+              <p class="site-description motion-element" itemprop="description">444</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一个简单的Redux-Demo计数器应用"><span class="nav-number">1.</span> <span class="nav-text">一个简单的Redux Demo计数器应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用前得需要安装"><span class="nav-number">1.1.</span> <span class="nav-text">使用前得需要安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建actions"><span class="nav-number">1.2.</span> <span class="nav-text">创建actions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Types"><span class="nav-number">1.3.</span> <span class="nav-text">创建Types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建reducers相关"><span class="nav-number">1.4.</span> <span class="nav-text">创建reducers相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化store"><span class="nav-number">1.5.</span> <span class="nav-text">初始化store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注入store"><span class="nav-number">1.6.</span> <span class="nav-text">注入store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API部分"><span class="nav-number">1.7.</span> <span class="nav-text">API部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#connect函数"><span class="nav-number">1.7.1.</span> <span class="nav-text">connect函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子："><span class="nav-number">1.7.2.</span> <span class="nav-text">例子：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写法介绍"><span class="nav-number">1.7.3.</span> <span class="nav-text">写法介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ES7以下"><span class="nav-number">1.7.3.1.</span> <span class="nav-text">ES7以下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ES7"><span class="nav-number">1.7.3.2.</span> <span class="nav-text">ES7</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文档"><span class="nav-number">1.8.</span> <span class="nav-text">相关文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redux中文文档：-http-www-redux-org-cn"><span class="nav-number">1.8.1.</span> <span class="nav-text">Redux中文文档： http://www.redux.org.cn/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6中文文档：-http-es6-ruanyifeng-com"><span class="nav-number">1.8.2.</span> <span class="nav-text">ES6中文文档：   http://es6.ruanyifeng.com/</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES7-amp-ES8特性：-https-www-jianshu-com-p-a138a525c287"><span class="nav-number">1.8.3.</span> <span class="nav-text">ES7&amp;ES8特性：   https://www.jianshu.com/p/a138a525c287</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sp-ye</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
