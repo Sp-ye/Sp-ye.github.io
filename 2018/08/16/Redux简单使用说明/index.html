@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="May the force be with you!">
 <meta property="og:description" content="一个简单的Redux Demo计数器应用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-16T09:56:49.000Z">
+<meta property="og:updated_time" content="2018-08-16T09:59:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redux简单使用说明">
 <meta name="twitter:description" content="一个简单的Redux Demo计数器应用">
@@ -196,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            分类
+            Categories
           </a>
         </li>
       
@@ -364,7 +364,7 @@
 </ol>
 </li>
 </ul>
-<p>标签: 注意：<br>    如果定义一个包含强制性参数函数（这个函数的长度为 1）时，ownProps 不会传到 mapStateToProps 和 mapDispatchToProps 中。举个例子，如下这样定义一个函数时将不会接收到 ownProps 作为第二个参数。</p>
+<p>注意：<br>    如果定义一个包含强制性参数函数（这个函数的长度为 1）时，ownProps 不会传到 mapStateToProps 和 mapDispatchToProps 中。举个例子，如下这样定义一个函数时将不会接收到 ownProps 作为第二个参数。</p>
 <h3 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span> (<span class="params">state</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(state); <span class="comment">// state</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">1</span>]); <span class="comment">// undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state, ownProps = &#123;&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(state); <span class="comment">// state</span></span><br><span class="line">    <span class="built_in">console</span>.log(ownProps); <span class="comment">// undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state, ownProps</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(state); <span class="comment">// state</span></span><br><span class="line">    <span class="built_in">console</span>.log(ownProps); <span class="comment">// ownProps</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
